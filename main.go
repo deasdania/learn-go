@@ -1,0 +1,18 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.Handle("/static/",
+		http.StripPrefix("/static/",
+			http.FileServer(http.Dir("assets"))))
+
+	// http.Handle("/", http.FileServer(http.Dir("assets"))) contoh mudah
+	// http.Dir:  berguna untuk adjustment path parameter. Separator dari path yang di-definisikan akan otomatis di-konversi ke path separator sesuai sistem operasi
+
+	fmt.Println("server started at localhost:9000")
+	http.ListenAndServe(":9000", nil)
+}
