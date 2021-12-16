@@ -25,7 +25,7 @@ func main() {
 
 	http.HandleFunc("/about", func(rw http.ResponseWriter, r *http.Request) {
 		var data = M{"name": "Batman"}
-		err = tmp.ExecuteTemplate(rw, "index", data)
+		err = tmp.ExecuteTemplate(rw, "about", data)
 		if err != nil {
 			http.Error(rw, err.Error(), http.StatusInternalServerError)
 		}
